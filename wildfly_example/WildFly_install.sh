@@ -1,7 +1,6 @@
 sudo apt update && sudo apt upgrade -y
 
-sudo apt install default-jre
-sudo apt install default-jdk
+sudo apt install openjdk-11-jdk -y
 
 sudo apt install apache2 -y
 
@@ -9,15 +8,15 @@ sudo mkdir /test
 
 sudo git clone https://github.com/XadmaX/WildFly-Servlet-Example.git /test
 
-sudo /test/WildFly-Servlet-Example/mvnw clean install
+cd /test/WildFly-Servlet-Example/
+sudo ./mvnw clean install
 
 sudo mkdir /test/wildfly
 
 sudo cd /wildfly
 
-sudo wget -P /wildfly https://github.com/wildfly/wildfly/releases/download/30.0.0.Final/wildfly-30.0.0.Final.tar.gz && \
-sudo tar xf wildfly-30.0.0.Final.tar.gz && \
-sudo mv wildfly-30.0.0.Final /opt/wildfly
+sudo wget -P /opt/wildfly https://github.com/wildfly/wildfly/releases/download/30.0.0.Final/wildfly-30.0.0.Final.tar.gz && \
+sudo tar xf /opt/wildfly/wildfly-30.0.0.Final.tar.gz -C /opt/wildfly --strip-components=1
 
 sudo useradd --system --no-create-home --user-group wildfly
 sudo chown -R wildfly:wildfly /opt/wildfly
@@ -42,7 +41,8 @@ EOF'
 sudo systemctl daemon-reload
 sudo systemctl start wildfly
 
-sudo mv /test/WildFly-Servlet-Example/target/devops-1.0-SNAPSHOT.war app.war
+sudo mv /test/WildFly-Servlet-Example/target/devops-1.0-SNAPSHOT.war /test/WildFly-Servlet-Example/target/app.war
 sudo mv /test/WildFly-Servlet-Example/target/app.war /opt/wildfly/standalone/deployments/
+
 
 sudo systemctl enable wildfly
