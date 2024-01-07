@@ -6,7 +6,7 @@ ssh-keygen -t rsa -b 2048 -f ~/.ssh/id_rsa
 #passfrase(wildflypass)
 
 #add public key to ~/.ssh/autorized_keys on server which you want to connest via ssh 
-cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys
+cat ~/.ssh/from_jenkins_to_wildfly_key.pub >> ~/.ssh/authorized_keys
 #key example:
 #ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCsI2WK88On2aWR4YMhQ1w2LKijWnz/EYTwzX7paQ6KoxFt0AbYvhtffSuLCCM89VWthlRAVG78GgzgF0RraBwiBHZgNJUwoWlP9/qg14PBTgc9/kxFdiO8mZEZia+lVKbyQvh3ZyO2O5y73vgkzrL9smfEgb8V95WlAGQ5tKvLDOFq/BEJ/+Jd5o2vm885MH/ScojocgXUrXXwVhjMQrc169rnSHPJQgEX5sugMIulAeRFPB15eefp2BYxr49po1icnWbA+J9baFBt8YwrN5xguX4p4rOrCD+BneZKsfBmd7g9+djqTiOx4iNbjldIF6ZctqSJ2tc6Wk8VyEMEaM7T root@ip-172-31-38-206
 
